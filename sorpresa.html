@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎁 Regalo Sorpresa para Angie 🎉</title>
+<style>
+body {
+  margin:0; padding:0;
+  min-height:100vh;
+  display:flex; justify-content:center; align-items:center;
+  flex-direction:column;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Fondo degradado negro a rojo oscuro */
+  background: linear-gradient(-45deg, #0d0d0d, #330000, #1a0000, #0d0d0d);
+  background-size: 400% 400%;
+  animation: fondo 15s ease infinite;
+  color:#fff; text-align:center;
+}
+@keyframes fondo {
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+h1 {
+  font-size:2.5em;
+  margin-bottom:20px;
+  text-shadow:0 0 10px #fff, 0 0 20px #ff0000;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+@keyframes glow {
+  from{text-shadow:0 0 10px #fff,0 0 20px #ff0000;}
+  to{text-shadow:0 0 20px #fff,0 0 40px #ff3300;}
+}
+
+.regalo {
+  background: rgba(255,255,255,0.05);
+  border:2px solid rgba(255,255,255,0.3);
+  border-radius:25px;
+  padding:30px;
+  max-width:90%;
+  width:500px;
+  box-shadow:0 0 25px rgba(255,0,0,0.4);
+  text-align:center;
+}
+
+button {
+  margin-top:20px;
+  padding:10px 20px;
+  border-radius:20px;
+  border:none;
+  font-size:1em;
+  cursor:pointer;
+  transition:0.3s;
+  box-shadow:0 0 10px rgba(0,0,0,0.3);
+}
+
+button.abrir {
+  background: linear-gradient(45deg, #ff0000, #990000);
+  color:white;
+}
+button.abrir:hover {
+  transform:scale(1.1);
+  background: linear-gradient(45deg, #990000, #ff3300);
+}
+
+button.volver {
+  background:#fff;
+  color:#ff3300;
+  border:2px dashed #ff0000;
+  font-weight:bold;
+}
+button.volver:hover {
+  background:#ff3300;
+  color:white;
+  transform:scale(1.1);
+}
+
+.sorpresa {
+  margin-top:20px;
+  display:none;
+  font-size:1.1em;
+  color:#fff;
+  line-height:1.5em;
+}
+
+.sorpresa img {
+  margin-top:15px;
+  width:100%;
+  border-radius:15px;
+  box-shadow:0 0 15px rgba(0,0,0,0.5);
+}
+</style>
+</head>
+<body>
+
+<h1>🎁 ¡Sorpresa Angie! 🎉</h1>
+<div class="regalo">
+  <p>Haz clic en el botón para descubrir tu regalo sorpresa 💖</p>
+  <button class="abrir" onclick="abrirSorpresa()">Abrir Regalo 🎀</button>
+
+  <div class="sorpresa" id="sorpresa">
+    <p>¡Feliz cumpleaños, Angiecitaaa! 🎂💖</p>
+    <p>Este regalo es solo un detalle para recordarte cuánto te aprecio y lo especial que eres. Aunque no sea lo mejor, y no este terminado aun, es solo un dibujo a un estilo más caricaturesco de ti y de mí, espero te guste en verdad, apenas lo termine espero que te encante.</p>
+    <img src="imagenes/Imagen de WhatsApp 2025-09-28 a las 23.41.31_f5ad5f18.jpg" alt="Regalo Sorpresa">
+  </div>
+
+  <button class="volver" onclick="volverInicio()">⬅ Volver</button>
+</div>
+
+<script>
+function abrirSorpresa(){
+  document.getElementById('sorpresa').style.display = 'block';
+}
+
+function volverInicio(){
+  window.location.href = 'index.html'; // Regresa a la página principal
+}
+</script>
+
+</body>
+</html>

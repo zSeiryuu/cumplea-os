@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz Cumpleaños Angie 💖</title>
+<style>
+body {
+  margin:0; padding:0; min-height:100vh;
+  background: linear-gradient(-45deg, #000, #330033, #1a001a, #0d0d0d);
+  background-size: 400% 400%;
+  animation: fondo 20s ease infinite, colorChange 10s ease-in-out infinite alternate;
+  display:flex; justify-content:center; align-items:center; flex-direction:column;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color:#fff; text-align:center; overflow-x:hidden;
+}
+
+@keyframes fondo {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+@keyframes colorChange {0%,100%{background-color:#000;}50%{background-color:#330033;}}
+@keyframes glow { from{text-shadow:0 0 10px #fff,0 0 20px #ffb6c1;} to{text-shadow:0 0 20px #fff,0 0 40px #ff1493;} }
+
+h1.titulo {
+  font-size:2.5em; margin:20px 0; 
+  animation: glow 2s ease-in-out infinite alternate; z-index:2;
+}
+
+.card {
+  background: rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:20px;
+  padding:20px;
+  width:400px; max-width:90%; max-height:650px;
+  box-shadow:0 0 25px rgba(255,105,180,0.4);
+  margin-top:20px;
+  display:flex; flex-direction:column; justify-content:space-between;
+  z-index:2;
+}
+
+.subtitulo { font-size:1.2em; margin-bottom:10px; font-weight:bold; color:#ff69b4; }
+.mensaje {display:none; font-size:1.05em; line-height:1.6em; margin-bottom:15px; overflow-y:auto; max-height:300px; padding-right:5px; text-align:justify;}
+.mensaje.activo {display:block;}
+.mensaje img {width:100%; max-height:220px; object-fit:cover; border-radius:15px; margin-top:15px; box-shadow:0 0 15px rgba(0,0,0,0.5);}
+
+.nav-btns {display:flex; justify-content:space-between; margin-top:10px; gap:10px;}
+button { background:#ff69b4; border:none; padding:10px 15px; font-size:1em; color:white; border-radius:20px; cursor:pointer; transition:0.3s; box-shadow:0 0 10px rgba(0,0,0,0.3);}
+button:hover {background:#ff1493; transform:scale(1.05);}
+
+/* Botón de audio externo */
+#audioControlBtn {margin-top:15px; background:#00bfff; box-shadow:0 0 10px rgba(0,0,0,0.3);}
+#audioControlBtn:hover {background:#0099cc; transform:scale(1.05);}
+
+/* Responsive */
+@media (max-width:768px){
+  h1.titulo {font-size:2em; padding:0 10px;}
+  .card {width:90%; max-height:520px; padding:15px;}
+  .mensaje {font-size:1em; max-height:250px;}
+  .nav-btns {flex-direction:column;}
+  button {width:100%;}
+}
+@media (max-width:480px){
+  h1.titulo {font-size:1.6em;}
+  .card {width:95%; max-height:480px;}
+  .mensaje {font-size:0.95em;}
+  .mensaje img {max-height:180px;}
+}
+
+/* Animaciones */
+.heart, .estrella, .globo, .confeti {position:fixed; z-index:0;}
+.heart { width:20px; height:20px; background:red; transform:rotate(45deg); border-radius:5px; opacity:0.6; animation: floatUp 6s linear infinite; }
+.heart::before, .heart::after { content:''; position:absolute; width:20px; height:20px; background:red; border-radius:50%; }
+.heart::before{top:-10px; left:0;} .heart::after{left:-10px; top:0;}
+@keyframes floatUp {0%{transform:translateY(0) rotate(45deg);opacity:0.7;} 100%{transform:translateY(-100vh) rotate(45deg);opacity:0;}}
+.estrella { width:2px; height:2px; background:white; border-radius:50%; opacity:0; animation: brillar 2s infinite alternate, moverEstrella linear infinite; box-shadow:0 0 6px white,0 0 12px white;}
+@keyframes brillar { from{opacity:0;} to{opacity:1;} }
+@keyframes moverEstrella {0%{transform:translateY(0);}100%{transform:translateY(-50px);} }
+.globo { width:30px; height:40px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%; animation: subirGlobo 8s linear infinite; }
+.globo::after { content:''; position:absolute; bottom:-10px; left:50%; width:2px; height:15px; background:#fff; transform:translateX(-50%); }
+@keyframes subirGlobo {0%{transform:translateY(100vh);}100%{transform:translateY(-50px);} }
+.confeti { width:8px; height:8px; opacity:0.9; animation: caerConfeti 5s linear infinite; }
+@keyframes caerConfeti {0%{transform:translateY(-10px) rotate(0deg);}100%{transform:translateY(100vh) rotate(360deg);}}
+</style>
+</head>
+<body>
+
+<h1 class="titulo">🎂 Feliz Cumpleaños Angie ❤️</h1>
+
+<div class="card">
+  <div class="mensaje activo">
+    <div class="subtitulo">💖 Para ti con todo mi corazón</div>
+    <p>Feliiiiiiiiz cumpleañooooos para mi persona favoritaaaa en todo este mundo (Angie Elizabeth Arellano Quijije)la cual amo con todo mi corazoncito de pollo, con tanta sinceridad. Hoy es un día muy especial porque celebramos tu existencia, y quiero que sepas cuánto iluminas mi mundo. Eres la persona más bonita, encantadora, maravillosa, hermosa, que el destino pudo ponerme en este largo camino llamado vida, dándome la gran oportunidad de conocerte y ser parte de tu día a día. Quiero iluminarte, hacerte feliz, darte todo lo que pueda, ser tu apoyo y estar en cada momento para ti. Cada risa tuya, cada gesto tierno y cada pequeño detalle que haces, te hacen ser única. Espero que este día esté lleno de momentos que te hagan brillar tanto como tu corazón brilla. Mereces todo lo bueno y bonito, ese corazoncito tuyo, toda tu, merecen lo mejor. Para los que tenemos la suerte de conocerte, gracias por existir, por ser tuuuuu y hacer mi mundo mucho más bonito solo con tu presencia.</p>
+    <img src="imagenes/romance-sunset.jpg" alt="Recuerdo 1">
+  </div>
+
+  <div class="mensaje">
+    <div class="subtitulo">🌸 Admiración infinita</div>
+    <p>Cada vez que pienso en ti, me doy cuenta de lo afortunado que soy de conocer a alguien tan maravillosa. Tu forma de ser es única y especial; la manera en que tratas a los demás, cómo te esfuerzas día a día y cómo te exiges a ti misma es realmente admirable. Te admiro de corazón. Todo mi ser desea lo mejor para ti, y espero que todos tus sueños y metas se hagan realidad. Aunque este no sea el regalo más grande, deseo de verdad que pases un cumpleaños feliz</p>
+    <img src="imagenes/6b88bdc8f7becd99b3eb6dbf8c1293b7.jpg" alt="Recuerdo 2">
+  </div>
+
+  <div class="mensaje">
+    <div class="subtitulo">🎁 Momentos inolvidables</div>
+    <p>Quiero que sepas que cada momento contigo es un recuerdo que guardaré por siempre en mi corazón. Desde las risas hasta las pequeñas conversaciones que parecen simples, cada una significa muchísimo para mí, simplemente me marcaron. Espero poder acompañarte hasta donde la vida y tu me lo permitan, celebrando tus logros, tus metas. Me quedare a tu lado, en tu mejor y peor momento estaré contigo, escuchándote, apoyándote en todo y amándote</p>
+    <img src="imagenes/istockphoto-1199467344-612x612.jpg" alt="Recuerdo 3">
+  </div>
+
+  <div class="mensaje">
+    <div class="subtitulo">✨ Felicidad Eterna</div>
+    <p>Mi mayor deseo en tu cumpleaños, mi tiquita hermosa, mi pequeña Angiecita, es que siempre tengas razones para sonreír, que cada dia aunque todo sea o parezca dificil, des todo de ti, no te me desanimes eres la mejor, TU PUEDES CON TODO NUNCA PIERDAS LA ESPERANZA. Gracias por ser tan increíble, por tu corazón puro, por tu ternura, y por cada instante que compartimos. Que nunca falte la alegría en tu vida y que cada sueño que guardas se haga realidad. Hoy celebro tu existencia y la suerte de tener a alguien tan extraordinaria a mi lado. Feliz cumpleaños, con todo mi amor, mi admiración y mi cariño infinito.</p>
+    <img src="imagenes/images.jpeg" alt="Recuerdo 4">
+  </div>
+
+  <div class="nav-btns">
+    <button onclick="cambiarMensaje(-1)">⬅ Anterior</button>
+    <button onclick="cambiarMensaje(1)">Siguiente ➡</button>
+  </div>
+</div>
+
+<!-- Botón de audio externo -->
+<button id="audioControlBtn" onclick="toggleAudio()">🎵 Reproducir Audio del mensaje</button>
+
+<br>
+<button onclick="irPaginaEspecial()">🎁 Regalo Sorpresa</button>
+
+<!-- Audios -->
+<audio id="audio0" src="audios/Audi1.mp3"></audio>
+<audio id="audio1" src="audios/audio2.mp3"></audio>
+<audio id="audio2" src="audios/audio3.mp3"></audio>
+<audio id="audio3" src="audios/audio4.mp3"></audio>
+<audio id="musica" src="musica_cumple.mp3" loop></audio>
+
+<script>
+const mensajes = document.querySelectorAll('.mensaje');
+let indice = 0;
+
+function cambiarMensaje(d){
+  mensajes[indice].classList.remove('activo');
+  indice = (indice + d + mensajes.length) % mensajes.length;
+  mensajes[indice].classList.add('activo');
+  actualizarBotonAudio();
+}
+
+// Música general
+const musica = document.getElementById('musica');
+function toggleMusica(){ musica.paused ? musica.play() : musica.pause(); }
+function irPaginaEspecial(){ window.location.href='sorpresa.html'; }
+
+// Audio externo
+function toggleAudio(){
+  const audio = document.getElementById('audio'+indice);
+  const btn = document.getElementById('audioControlBtn');
+
+  // Pausar todos los demás audios
+  const audios = document.querySelectorAll('audio');
+  audios.forEach((a, i) => { if(i !== indice){ a.pause(); } });
+
+  if(audio.paused){ audio.play(); btn.textContent='⏸ Pausar Audio'; }
+  else{ audio.pause(); btn.textContent='🎵 Reproducir Audio'; }
+
+  audio.onended = ()=>{ btn.textContent='🎵 Reproducir Audio'; }
+}
+
+function actualizarBotonAudio(){
+  const btn = document.getElementById('audioControlBtn');
+  const audio = document.getElementById('audio'+indice);
+  if(audio.paused) btn.textContent='🎵 Reproducir Audio';
+  else btn.textContent='⏸ Pausar Audio';
+}
+
+// Animaciones
+function crearCorazon(){const h=document.createElement('div');h.className='heart';h.style.left=Math.random()*100+'vw';h.style.animationDuration=(4+Math.random()*3)+'s';document.body.appendChild(h);setTimeout(()=>h.remove(),7000);}
+function crearEstrella(){const e=document.createElement('div');e.className='estrella';e.style.left=Math.random()*window.innerWidth+'px';e.style.top=Math.random()*window.innerHeight+'px';e.style.animationDuration=(1+Math.random()*2)+'s';document.body.appendChild(e);setTimeout(()=>e.remove(),4000);}
+function crearGlobo(){const g=document.createElement('div');g.className='globo';g.style.left=Math.random()<0.5?'-50px':'calc(100vw + 50px)';g.style.background=`radial-gradient(circle at 50% 30%, hsl(${Math.random()*360},80%,70%), hsl(${Math.random()*360},80%,50%))`;document.body.appendChild(g);setTimeout(()=>g.remove(),12000);}
+function crearConfeti(){const c=document.createElement('div');c.className='confeti';c.style.left=Math.random()*window.innerWidth+'px';c.style.backgroundColor=`hsl(${Math.random()*360},80%,70%)`;document.body.appendChild(c);setTimeout(()=>c.remove(),5000);}
+
+setInterval(crearCorazon,500);
+setInterval(crearGlobo,2000);
+setInterval(crearConfeti,300);
+setInterval(crearEstrella,150);
+</script>
+
+</body>
+</html>
